@@ -1,0 +1,82 @@
+// Global /////////////////////////////////////////////////////////
+
+.site_title {
+  color: @basecolor;
+  font-size: (27em/16);
+  text-transform: lowercase;
+  margin: (15em/27) 0 (18em/27);
+}
+
+footer {
+  color: @darkgrey;
+  padding: 2em 0 5em;
+
+  small {
+    font-size: (13em/16);
+  }
+}
+
+input[type=number] {
+  appearance: none;
+  padding: 0;
+  text-align: center;
+  width: auto;
+  min-width: (36em/16);
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+#output {
+  background: @control_background;
+  font-family: @fontfamily_mono;
+  font-size: (18em/16);
+  margin-bottom: @lh;
+  padding: (16em/18) 0;
+
+  .layout {
+    display: flex;
+    min-height: (@lh * 3);
+    align-items: center;
+  }
+
+  span {
+    letter-spacing: (3/100em);
+    word-break: break-word;
+  }
+
+  @media @tablet {
+    font-size: (24em/16);
+    padding: (24em/24) 0;
+  }
+}
+
+form {
+  @media @max-medium-screen {
+    font-size: (18em/16);
+  }
+
+  p {
+    margin-bottom: (@lh + (4/16));
+  }
+
+  span {
+    display: inline-block;
+    line-height: (42/16);
+    white-space: nowrap;
+
+    &, input, select {
+      vertical-align: baseline;
+    }
+  }
+}
+
+button[type=submit] {
+  .button-color(@basecolor);
+  .control-size(16, 42);
+  padding: 0 (18em/16);
+}
+

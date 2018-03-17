@@ -1,0 +1,60 @@
+include head.pug
+include header.pug
+
+main#app
+
+  #output
+    .layout
+      span {{ password }}
+
+  .layout
+    form(@submit.prevent="updatePassword")
+      p
+        span
+          | A passwurd with 
+        span
+          input#length._tabular-numerals(
+            title="Password Length"
+            aria-label="Password Length"
+            type="number"
+            name="l"
+            placeholder="24"
+            pattern="[0-9]*"
+            min="12"
+            max="64"
+            step="1"
+            @input="onInput"
+            v-model="input.length")
+          |  characters, 
+        span
+          select#case(
+            title="Password Case"
+            aria-label="Password Case"
+            name="c"
+            @change="onInput"
+            v-model="input.lettercase")
+            option(value="c") capital
+            option(value="l") lower case
+          |  letters, 
+        span
+          | separated by
+          select#separator(
+            title="Password Separator"
+            aria-label="Password Separator"
+            name="s"
+            @change="onInput"
+            v-model="input.separator")
+            option(value="h") hyphens
+            option(value="n") numbers
+            option(value="p") periods
+            option(value="c") commas
+            option(value="s") slashes
+          | &thinsp;.
+
+      p
+        button(
+          type="submit"
+        ) Get another
+
+include footer.pug
+include foot.pug

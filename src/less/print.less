@@ -1,0 +1,45 @@
+@media print {
+  * {
+    background : transparent !important;
+    color      : #000 !important;
+    // box-shadow  : none !important;
+    // text-shadow : none !important;
+    // filter      : none !important;
+    // -ms-filter  : none !important;
+  }
+
+  @page {
+    margin: 1.5cm;
+    widows: 4;
+    orphans: 3;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  p, li, pre, figure, blockquote {
+    page-break-inside: avoid;
+  }
+
+  input, select {
+    box-shadow: 0 0 0 1px #ddd;
+  }
+
+  form {
+    max-width: 32em;
+  }
+
+  select {
+    padding-right: @control_padding;
+  }
+
+  form span {
+    // line-height: (32/16);
+  }
+
+  .explanation,
+  button[type=submit] {
+    display: none;
+  }
+}

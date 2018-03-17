@@ -1,0 +1,60 @@
+// Assistive //////////////////////////////////////////////////////
+@assistive_focus__color: mix(@orange, @yellow, 66);
+@assistive_focus__shadow: 0 0 0 2px @assistive_focus__color;
+
+.keyboard-focus-style(@inset: false) {
+  outline: none;
+  box-shadow: @assistive_focus__shadow;
+  transition: none;
+
+  & when (@inset) {
+    box-shadow: inset @assistive_focus__shadow;
+  }
+}
+
+[data-whatinput=keyboard][data-whatintent=keyboard] {
+  :focus,
+  ._focus {
+    .keyboard-focus-style(true);
+  }
+
+  input,
+  select,
+  textarea,
+  button,
+  [role=button] {
+    &:focus {
+      box-shadow: @assistive_focus__shadow;
+    }
+  }
+
+  input[type=checkbox],
+  input[type=radio] {
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:focus:before {
+      box-shadow: @assistive_focus__shadow;
+    }
+  }
+}
+
+[role=tab],
+[aria-controls] {
+  user-select: none;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+[aria-pressed=false]  .aria-pressed__true,
+[aria-pressed=true]   .aria-pressed__false,
+[aria-expanded=false] .aria-expanded__true,
+[aria-expanded=true]  .aria-expanded__false,
+[aria-checked=false]  .aria-checked__true,
+[aria-checked=true]   .aria-checked__false {
+  display: none;
+}

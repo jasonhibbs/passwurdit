@@ -1,0 +1,23 @@
+- var title = "passwurdit";
+- var short_title = title;
+- var desc = "Get a memorable password.";
+- var author = "Jason Hibbs";
+- var resources = "/src/";
+- var cache = "5";
+
+doctype html
+<html class="no-js" lang="en">
+meta(charset="utf-8")
+meta(http-equiv="x-ua-compatible" content="ie=edge")
+meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover")
+
+title= title
+include meta.pug
+
+link(rel="stylesheet" href=resources + "css/style.css?v=" + cache)
+
+script.
+  document.documentElement.className=document.documentElement.className.replace('no-js','js')
+
+<!--[if IEMobile]><meta http-equiv="cleartype" content="on"><![endif]-->
+<body>
