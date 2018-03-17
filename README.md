@@ -1,3 +1,5 @@
-# Pugless
+# [passwurdit](http://pass.wurd.it)
 
-Just an upstart that works nicely with CodeKit 3 and anybody who still prefers LESS (that’s me).
+A memorable password generator that isn’t ugly.
+
+[Try it out](http://pass.wurd.it).
