@@ -48,7 +48,7 @@
       <p class="_warning _severe" v-if="settings.length &lt; 12">This is very short 🙈 Please don’t use this, or don’t use the software that requires this – it can’t be good.</p>
       <p class="_warning" v-else-if="settings.length &lt; 16">This is a bit short 😬</p>
       <p>
-        <button id="copy" type="button" :class="{ '_success': copySuccess, _fail: copyFail }" :disabled="copying" :aria-pressed="copying" @click="onCopy"><span v-if="!copySuccess &amp;&amp; !copyFail">Copy it</span><span v-if="copySuccess">Copied!</span><span v-if="copyFail">Couldn’t Copy</span></button>
+        <button id="copy" type="button" :class="{ '_success': copySuccess, _fail: copyFail }" :disabled="copying" :aria-pressed="copying" @click="onCopy"><span v-if="copySuccess">Copied!</span><span v-else-if="copyFail">Couldn’t Copy</span><span v-else>Copy it</span></button>
         <button type="submit">Get another</button>
       </p>
     </form>

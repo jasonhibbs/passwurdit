@@ -66,9 +66,9 @@ main#app
           :aria-pressed="copying"
           @click="onCopy"
         )
-          span(v-if="!copySuccess && !copyFail") Copy it
           span(v-if="copySuccess") Copied!
-          span(v-if="copyFail") Couldn’t Copy
+          span(v-else-if="copyFail") Couldn’t Copy
+          span(v-else) Copy it
 
         button(type="submit") Get another
 
