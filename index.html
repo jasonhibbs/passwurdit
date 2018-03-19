@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="no-js" lang="en">
+<!DOCTYPE html><html class="no-js _loading" lang="en">
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
@@ -27,7 +27,7 @@
   </div>
 </header>
 <main id="app">
-  <div id="output">
+  <div id="output" @mouseup="onTouchOutput" @touchend="onTouchOutput">
     <div class="layout"><span>{{ password }}</span></div>
   </div>
   <div class="layout">
@@ -48,6 +48,7 @@
       <p class="_warning _severe" v-if="settings.length &lt; 12">This is very short 🙈 Please don’t use this, or don’t use the software that requires this – it can’t be good.</p>
       <p class="_warning" v-else-if="settings.length &lt; 16">This is a bit short 😬</p>
       <p>
+        <button id="copy" type="button" :class="{ '_success': copySuccess, _fail: copyFail }" :disabled="copying" :aria-pressed="copying" @click="onCopy"><span v-if="!copySuccess &amp;&amp; !copyFail">Copy it</span><span v-if="copySuccess">Copied!</span><span v-if="copyFail">Couldn’t Copy</span></button>
         <button type="submit">Get another</button>
       </p>
     </form>

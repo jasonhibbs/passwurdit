@@ -204,6 +204,19 @@ function getQueryFromPath(path) {
   return query;
 }
 
+// Select & Copy --------------------------------------------------
+function setSelection(el) {
+  var selection = window.getSelection();
+  var range = document.createRange();
+  range.selectNode(el);
+  selection.removeAllRanges();
+  selection.addRange(range);
+}
+
+function clearSelection() {
+  window.getSelection().removeAllRanges();
+}
+
 // Vue ////////////////////////////////////////////////////////////
 var vr = new VueRouter({
   mode: 'history'
@@ -214,6 +227,9 @@ var vm = new Vue({
   el: '#app',
   data: {
     refresh : false,
+    copying     : false,
+    copySuccess : false,
+    copyFail    : false,
     input: {
       length     : 24,
       lettercase : 'l',
@@ -238,9 +254,37 @@ var vm = new Vue({
       }
       this.updateSettings();
     },
+    onCopy: function(e) {
+      var that = this;
+      var button = e.target;
+      setSelection(document.getElementById('output'));
+      this.copying = true;
+
+      try {
+        var copied = document.execCommand('copy');
+        if (copied) {
+          this.copySuccess = true;
+        } else {
+          this.copyFail = true;
+        }
+      } catch (error) {
+        this.copyFail = true;
+      }
+
+      clearSelection();
+
+      setTimeout(function() {
+        that.copying = false;
+        that.copyFail = false;
+        that.copySuccess = false;
+      }, 1600);
+    },
     onInput: function() {
       this.updateSettings();
       this.updateURL();
+    },
+    onTouchOutput: function(e) {
+      setSelection(e.target);
     },
     updateSettings: function() {
       if (isLengthValid(this.input.length)) {
@@ -284,8 +328,6 @@ var vm = new Vue({
   beforeMount: function() {
     this.getQuery();
     this.getCode();
+    document.documentElement.className=document.documentElement.className.replace('_loading','_loaded')
   }
 });
-
-// TODO:
-// Address invalid input

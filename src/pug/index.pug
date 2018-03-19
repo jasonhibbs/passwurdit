@@ -3,7 +3,10 @@ include header.pug
 
 main#app
 
-  #output
+  #output(
+    @mouseup="onTouchOutput"
+    @touchend="onTouchOutput"
+  )
     .layout
       span {{ password }}
 
@@ -56,9 +59,18 @@ main#app
       p._warning(   v-else-if="settings.length < 16") This is a bit short 😬
 
       p
-        button(
-          type="submit"
-        ) Get another
+        button#copy(
+          type="button"
+          :class="{ '_success': copySuccess, _fail: copyFail }"
+          :disabled="copying"
+          :aria-pressed="copying"
+          @click="onCopy"
+        )
+          span(v-if="!copySuccess && !copyFail") Copy it
+          span(v-if="copySuccess") Copied!
+          span(v-if="copyFail") Couldn’t Copy
+
+        button(type="submit") Get another
 
 include footer.pug
 include foot.pug

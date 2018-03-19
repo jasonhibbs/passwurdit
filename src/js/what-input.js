@@ -1,9 +1,7 @@
-/**
- * what-input - A global utility for tracking the current input method (mouse, keyboard or touch).
- * @version v5.0.5
- * @link https://github.com/ten1seven/what-input
- * @license MIT
- */
+// what-input - A global utility for tracking the current input method (mouse, keyboard or touch).
+// @version v5.0.5
+// @link https://github.com/ten1seven/what-input
+// @license MIT
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();

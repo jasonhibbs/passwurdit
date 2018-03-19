@@ -1,5 +1,13 @@
 // Global /////////////////////////////////////////////////////////
 
+html._loading {
+  [v-if],
+  [v-else-if],
+  #output span {
+    display: none;
+  }
+}
+
 .site_title {
   color: @basecolor;
   font-size: (27em/16);
@@ -72,12 +80,23 @@ form {
       vertical-align: baseline;
     }
   }
+
+  button {
+    .control-size(16, 42);
+    padding: 0 (18em/16);
+  }
+}
+
+button#copy {
+  .button-color(@basecolor);
+
+  &._fail {
+    .button-color(@badcolor);
+  }
 }
 
 button[type=submit] {
-  .button-color(@basecolor);
-  .control-size(16, 42);
-  padding: 0 (18em/16);
+
 }
 
 p._warning {
