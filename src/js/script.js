@@ -2,7 +2,7 @@
 // Script /////////////////////////////////////////////////////////
 var minWordLength = 2;
 var maxWordLength = 9;
-var minPasswordLength = 12;
+var minPasswordLength = 8;
 var maxPasswordLength = 64;
 var defaultPasswordLength = 24;
 
@@ -108,12 +108,20 @@ function getPassword(length, lettercase, separator) {
     }
 
     if ((length - string.length) < (min + 1)) {
+      // We’ve overrun, delete the previous word
       string = deleteAfter(separator, string);
     }
 
     if ((length - string.length) <= max) {
-      word = getWordOfLength(length - string.length);
+      if (!string.length) {
+        // Password is too short, but we’ll try to give them more than one word
+        word = getWordOfLength(Math.floor(length / random(4, 2))) + separator;
+      } else {
+        // We’re at the end of a string, so we’ll get a word that fits
+        word = getWordOfLength(length - string.length);
+      }
     } else {
+      // Any word will do
       word = getRandomWord() + separator;
     }
 

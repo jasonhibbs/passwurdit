@@ -20,7 +20,7 @@ main#app
             name="l"
             placeholder="24"
             pattern="[0-9]*"
-            min="12"
+            min="8"
             max="64"
             step="1"
             @input="onInput"
@@ -50,6 +50,10 @@ main#app
             option(value="c") commas
             option(value="s") slashes
           | &thinsp;.
+
+
+      p._warning._severe(v-if="settings.length < 12") This is very short 🙈 Please don’t use this, or don’t use the software that requires this – it can’t be good.
+      p._warning(   v-else-if="settings.length < 16") This is a bit short 😬
 
       p
         button(
