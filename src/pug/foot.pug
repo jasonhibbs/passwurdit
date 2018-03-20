@@ -3,7 +3,7 @@
 script.
   window.Vue       || document.write('<script src="#{resources}js/vue.min.js"><\/script>')
   window.VueRouter || document.write('<script src="#{resources}js/vue-router.min.js"><\/script>')
-script(src=resources + "js/words.js")
-script(src=resources + "js/script.min.js")
+script(src=resources + "js/words.js?v=" + cache)
+script(src=resources + "js/script.min.js?v=" + cache)
 </body>
 </html>
