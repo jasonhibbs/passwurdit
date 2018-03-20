@@ -7,8 +7,8 @@ var maxPasswordLength = 64;
 var defaultPasswordLength = 24;
 
 function random(max, min) {
-  if (!max) { max = 1 }
-  if (!min) { min = 0 }
+  if (!max) { max = 1; }
+  if (!min) { min = 0; }
   var diff = (max - min);
   return Math.floor(Math.random() * diff) + min;
 }
@@ -31,20 +31,15 @@ function getSeparator(code) {
   switch (code) {
     case 'n':
       return '0';
-      break;
     case 's':
       return '/';
-      break;
     case 'p':
       return '.';
-      break;
     case 'c':
       return ',';
-      break;
-    case 'h':
+    // case 'h':
     default:
       return '-';
-      break;
   }
 }
 
@@ -76,7 +71,7 @@ function getWordOfLength(length) {
 }
 
 function getWeightedRandomLength() {
-  var lengths = [2,3,4,4,5,5,5,5,6,6,6,7,7,8,9];
+  var lengths = [2,3,3,4,4,5,5,5,5,6,6,6,6,6,7,7,7,7,8,8,9];
   return lengths[random(lengths.length)];
 }
 
@@ -331,6 +326,6 @@ var vm = new Vue({
   beforeMount: function() {
     this.getQuery();
     this.getCode();
-    document.documentElement.className=document.documentElement.className.replace('_loading','_loaded')
+    document.documentElement.className=document.documentElement.className.replace('_loading','_loaded');
   }
 });
