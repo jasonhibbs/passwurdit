@@ -3,10 +3,7 @@ include header.pug
 
 main#app
 
-  #output(
-    @mouseup="onTouchOutput"
-    @touchend="onTouchOutput"
-  )
+  #output(@mouseup="onTouchOutput")
     .layout
       span {{ password }}
 
