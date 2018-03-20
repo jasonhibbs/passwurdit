@@ -208,7 +208,7 @@ function getQueryFromPath(path) {
 function setSelection(el) {
   var selection = window.getSelection();
   var range = document.createRange();
-  range.selectNode(el);
+  range.selectNodeContents(el);
   selection.removeAllRanges();
   selection.addRange(range);
 }
@@ -257,7 +257,10 @@ var vm = new Vue({
     onCopy: function(e) {
       var that = this;
       var button = e.target;
-      setSelection(document.getElementById('output'));
+      var password = document
+        .getElementById('output')
+        .getElementsByTagName('span')[0];
+      setSelection(password);
       this.copying = true;
 
       try {
