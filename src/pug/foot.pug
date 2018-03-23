@@ -1,9 +1,14 @@
-//- script(src="//cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js")
-//- script(src="//cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js")
+script(src="//cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js")
+script(src="//cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js")
 script.
   window.Vue       || document.write('<script src="#{resources}js/vue.min.js"><\/script>')
   window.VueRouter || document.write('<script src="#{resources}js/vue-router.min.js"><\/script>')
 script(src=resources + "js/words.js?v=" + cache)
 script(src=resources + "js/script.min.js?v=" + cache)
+
+script(async src="https://www.googletagmanager.com/gtag/js?id=UA-16937765-11")
+script.
+  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-16937765-11');
+
 </body>
 </html>
