@@ -1,84 +1,10 @@
 // Mixins /////////////////////////////////////////////////////////
 // Helpers ----------------------------------------------
 .clearfix {
-  *zoom: 1;
-
-  &:before,
   &:after {
-    display: table;
-    line-height: 0;
     content: "";
-  }
-  &:after {
+    display: table;
     clear: both;
-  }
-}
-
-.hide-text {
-  text-indent: 200%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.delist {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.inline-list {
-  .delist();
-
-  li {
-    display: inline-block;
-  }
-
-  a {
-    display: block;
-  }
-}
-
-.aspect_ratio(@w, @r) {
-  width: @w;
-  height: (@w / @r);
-}
-
-// Accessibility ----------------------------------------
-[hidden],
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.visuallyhidden {
-  overflow: hidden;
-  position: absolute;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-
-  &.focusable:active,
-  &.focusable:focus {
-    position: static;
-    clip: auto;
-    height: auto;
-    width: auto;
-    margin: 0;
-    overflow: visible;
-  }
-}
-
-// Undoing ---------------------------------------------------------
-.no-transition {
-  &, *, *:before, *:after {
-    transition: none !important;
   }
 }
 

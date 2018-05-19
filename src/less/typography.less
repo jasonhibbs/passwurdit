@@ -79,7 +79,6 @@ h5, .h5 {
 }
 h6, .h6 {
   .heading-size(16, 24);
-  ._smallcaps-all();
 }
 
 .heading-size(@font-size, @line-height: @font-size, @leading: @lineheight_base) {
@@ -97,16 +96,6 @@ h6, .h6 {
   font-family: @fontfamily_heading;
   font-weight: @fontweight_heading;
   text-rendering: optimizelegibility;
-
-  .lighter &,
-  &.lighter {
-    font-weight: @fontweight_heading - 100;
-  }
-
-  .heavier &,
-  &.heavier {
-    font-weight: @fontweight_heading + 100;
-  }
 }
 
 p,
@@ -118,64 +107,7 @@ blockquote {
   font-size: inherit;
   line-height: inherit;
   margin: 0 0 @lh;
-
-  .lighter &,
-  &.lighter {
-    font-weight: @fontweight_base - 100;
-  }
-
-  .heavier &,
-  &.heavier {
-    font-weight: @fontweight_base + 100;
-  }
 }
-
-abbr,
-dfn {
-  cursor: help;
-}
-
-tt,
-code,
-kbd,
-pre,
-samp {
-  font-family: @fontfamily_mono;
-  display: inline-block;
-  background: fadeout(@basecolor, 94);
-  padding: 0 0.25em;
-}
-
-b, strong {
-  font-weight: @fontweight_bold;
-}
-
-small {
-  font-size: 0.875em;
-  font-weight: 300;
-}
-
-ul,
-ol {
-  margin: 0 auto @lh;
-  padding-left: @list_padding;
-}
-
-li a {
-  display: block;
-}
-
-li ul,
-li ol {
-  margin: 0 auto 0;
-}
-
-blockquote {
-  border-left: 0.25em solid @decorcolor;
-  margin-left: 0;
-  padding-left: 1.25em;
-}
-
 
 // Typographic Features -------------------------------------------
 ._tabular-numerals {
@@ -185,28 +117,4 @@ blockquote {
        -o-font-feature-settings: "tnum" 1;
           font-feature-settings: "tnum" 1;
   font-variant-numeric: tabular-nums;
-}
-
-._lining-numerals {
-  -webkit-font-feature-settings: "lnum" 1;
-     -moz-font-feature-settings: "lnum" 1;
-      -ms-font-feature-settings: "lnum" 1;
-       -o-font-feature-settings: "lnum" 1;
-          font-feature-settings: "lnum" 1;
-}
-
-._smallcaps {
-  -webkit-font-feature-settings: "smcp" 1;
-     -moz-font-feature-settings: "smcp" 1;
-      -ms-font-feature-settings: "smcp" 1;
-       -o-font-feature-settings: "smcp" 1;
-          font-feature-settings: "smcp" 1;
-}
-
-._smallcaps-all {
-  -webkit-font-feature-settings: "smcp" 1, "c2sc" 1;
-     -moz-font-feature-settings: "smcp" 1, "c2sc" 1;
-      -ms-font-feature-settings: "smcp" 1, "c2sc" 1;
-       -o-font-feature-settings: "smcp" 1, "c2sc" 1;
-          font-feature-settings: "smcp" 1, "c2sc" 1;
 }

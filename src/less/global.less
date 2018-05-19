@@ -17,7 +17,7 @@ html._loading {
 
 footer {
   color: @darkgrey;
-  padding: 2em 0 5em;
+  padding: (@lh * 2) 0 (@lh * 4);
 
   small {
     font-size: (13em/16);
@@ -41,9 +41,9 @@ input[type=number] {
 #output {
   background: @control_background;
   font-family: @fontfamily_mono;
-  font-size: (18em/16);
-  margin-bottom: @lh;
-  padding: (16em/18) 0;
+  font-size: (20em/16);
+  margin-bottom: (@lh * (2/3));
+  padding: (15em/20) 0;
   -webkit-tap-highlight-color: transparent;
 
   .layout {
@@ -55,11 +55,13 @@ input[type=number] {
   span {
     letter-spacing: (3/100em);
     word-break: break-word;
+    outline: 0;
   }
 
   @media @tablet {
-    font-size: (24em/16);
-    padding: (24em/24) 0;
+    font-size: (27em/18);
+    line-height: (40/27);
+    padding: (24em/27) 0;
   }
 }
 
@@ -69,7 +71,7 @@ form {
   }
 
   p {
-    margin-bottom: (@lh + (4/16));
+    margin-bottom: (@lh * 1);
   }
 
   span {
@@ -89,15 +91,11 @@ form {
 }
 
 button#copy {
-  .button-color(@basecolor);
+  .button-color(@basecolor, @white);
 
   &._fail {
     .button-color(@badcolor);
   }
-}
-
-button[type=submit] {
-
 }
 
 p._warning {
