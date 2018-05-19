@@ -42,8 +42,8 @@ input[type=number] {
   background: @control_background;
   font-family: @fontfamily_mono;
   font-size: (20em/16);
-  margin-bottom: (@lh * (2/3));
-  padding: (15em/20) 0;
+  margin-bottom: (@lh * 1);
+  padding: (19em/20) 0;
   -webkit-tap-highlight-color: transparent;
 
   .layout {
@@ -62,6 +62,10 @@ input[type=number] {
     font-size: (27em/18);
     line-height: (40/27);
     padding: (24em/27) 0;
+
+    .layout {
+      min-height: (120em/27);
+    }
   }
 }
 
@@ -71,7 +75,7 @@ form {
   }
 
   p {
-    margin-bottom: (@lh * 1);
+    margin-bottom: (@lh * 1.333);
   }
 
   span {
