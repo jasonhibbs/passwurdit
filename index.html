@@ -28,11 +28,15 @@
   </div>
 </header>
 <main id="app">
-  <div id="output" @mouseup="onTouchOutput">
-    <div class="layout"><span>{{ password }}</span></div>
+  <div id="output" role="region" aria-live="polite" @mouseup="onTouchOutput">
+    <div class="layout"><span tabindex="0" @focus="onTouchOutput">{{ password }}</span></div>
   </div>
   <div class="layout">
-    <form @submit.prevent="updatePassword">
+    <form aria-controls="output" @submit.prevent="updatePassword">
+      <p>
+        <button id="copy" type="button" :class="{ '_success': copySuccess, _fail: copyFail }" :disabled="copying" :aria-pressed="copying" @click="onCopy"><span v-if="copySuccess">Copied!</span><span v-else-if="copyFail">Couldn’t Copy</span><span v-else>Copy it</span></button>
+        <button type="submit">Get another</button>
+      </p>
       <p><span>A passwurd with </span><span>
           <input class="_tabular-numerals" id="length" title="Password Length" aria-label="Password Length" type="number" name="l" placeholder="24" pattern="[0-9]*" min="8" max="64" step="1" @input="onInput" v-model="input.length"> characters, </span><span>
           <select id="case" title="Password Case" aria-label="Password Case" name="c" @change="onInput" v-model="input.lettercase">
@@ -46,12 +50,10 @@
             <option value="c">commas</option>
             <option value="s">slashes</option>
           </select>&thinsp;.</span></p>
-      <p class="_warning _severe" v-if="settings.length &lt; 12">This is very short 🙈 Please don’t use this, or don’t use the software that requires this – it can’t be good.</p>
-      <p class="_warning" v-else-if="settings.length &lt; 16">This is a bit short 😬</p>
-      <p>
-        <button id="copy" type="button" :class="{ '_success': copySuccess, _fail: copyFail }" :disabled="copying" :aria-pressed="copying" @click="onCopy"><span v-if="copySuccess">Copied!</span><span v-else-if="copyFail">Couldn’t Copy</span><span v-else>Copy it</span></button>
-        <button type="submit">Get another</button>
-      </p>
+      <template v-if="!!settings.length">
+        <p class="_warning _severe" v-if="settings.length &lt; 12">This is very short 🙈</p>
+        <p class="_warning" v-else-if="settings.length &lt; 16">This is a bit short 😬</p>
+      </template>
     </form>
   </div>
 </main>

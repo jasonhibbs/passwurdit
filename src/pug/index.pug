@@ -3,12 +3,37 @@ include header.pug
 
 main#app
 
-  #output(@mouseup="onTouchOutput")
+  #output(
+    role="region"
+    aria-live="polite"
+    @mouseup="onTouchOutput"
+  )
     .layout
-      span {{ password }}
+      span(
+        tabindex="0"
+        @focus="onTouchOutput"
+      ) {{ password }}
 
   .layout
-    form(@submit.prevent="updatePassword")
+    form(
+      aria-controls="output"
+      @submit.prevent="updatePassword"
+    )
+
+      p
+        button#copy(
+          type="button"
+          :class="{ '_success': copySuccess, _fail: copyFail }"
+          :disabled="copying"
+          :aria-pressed="copying"
+          @click="onCopy"
+        )
+          span(v-if="copySuccess") Copied!
+          span(v-else-if="copyFail") Couldn’t Copy
+          span(v-else) Copy it
+
+        button(type="submit") Get another
+
       p
         span
           | A passwurd with 
@@ -52,22 +77,11 @@ main#app
           | &thinsp;.
 
 
-      p._warning._severe(v-if="settings.length < 12") This is very short 🙈 Please don’t use this, or don’t use the software that requires this – it can’t be good.
-      p._warning(   v-else-if="settings.length < 16") This is a bit short 😬
+      template(v-if="!!settings.length")
+        p._warning._severe(v-if="settings.length < 12") This is very short 🙈
+        p._warning(   v-else-if="settings.length < 16") This is a bit short 😬
 
-      p
-        button#copy(
-          type="button"
-          :class="{ '_success': copySuccess, _fail: copyFail }"
-          :disabled="copying"
-          :aria-pressed="copying"
-          @click="onCopy"
-        )
-          span(v-if="copySuccess") Copied!
-          span(v-else-if="copyFail") Couldn’t Copy
-          span(v-else) Copy it
 
-        button(type="submit") Get another
 
 include footer.pug
 include foot.pug
