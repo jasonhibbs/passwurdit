@@ -69,16 +69,8 @@ function getPasswordCase() {
 }
 
 function deleteAfter($char, $string) {
-  // index = string.slice(0, -1).lastIndexOf($char) + 1;
-
-  // if (char.match(/\d/)) {
-  //   index = string.search(/(\d+)(?!.*\d)/) + 1;
-  // }
-
-  // return string.substring(0, index);
-
   $end = substr(strrchr($string, $char), 1);
-  $trimlength = strlen($end) + 1;
+  $trimlength = strlen($end);
   return substr($string, 0, $trimlength);
 }
 
