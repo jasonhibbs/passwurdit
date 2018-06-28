@@ -1,20 +1,11 @@
 <?php
 
 // Whitelist //////////////////////////////////////////////////////
-$referrer = $_SERVER['HTTP_REFERER'];
-$whitelist = ['//jasons-486.local:5757', '//jasonhibbs.co.uk', '//pass.wurd.it'];
-$allowed = false;
+$origin = $_SERVER['HTTP_ORIGIN'];
+$whitelist = ['http://jasons-486.local:5757', 'http://jasonhibbs.co.uk', 'http://pass.wurd.it'];
 
-foreach($whitelist as $domain) {
-  if (strpos($referrer, $domain) !== false) {
-    $allowed = true;
-    break;
-  }
-}
-
-if ($referrer !== NULL && !$allowed) {
-  echo 'poo-poo-poo';
-  die;
+if (in_array($origin, $whitelist)) {
+    header("Access-Control-Allow-Origin: $origin");
 }
 
 // Setup //////////////////////////////////////////////////////////

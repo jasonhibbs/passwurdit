@@ -1,6 +1,10 @@
 <IfModule mod_rewrite.c>
   Options +SymLinksIfOwnerMatch
   RewriteEngine On
+  
+  # Remove .php
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
   # Vue
   RewriteBase /
@@ -12,8 +16,8 @@
   # Strip slash
   # RewriteCond %{REQUEST_FILENAME} !-d
   # RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-  #
+  
+  # Decode Parameters
   # RewriteCond %{REQUEST_FILENAME} !-f
   # RewriteCond %{REQUEST_FILENAME} !-d
   # RewriteRule ^([0-9]{0,2}):([a-zA-Z]{0,1}):([a-zA-Z]{0,1})$ ?l=$1&c=$2&s=$3 [QSA]
